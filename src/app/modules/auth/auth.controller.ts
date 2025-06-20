@@ -51,6 +51,8 @@ const rest_password = async_handler(async (req, res) => {
     })
 })
 const change_password = async_handler(async (req, res) => {
+    const { email } = req?.user;
+    req.body = { ...req?.body, email }
     const result = await auth_services.change_password_into_db(req?.body)
     manage_response(res, {
         success: true,
