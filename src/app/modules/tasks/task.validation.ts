@@ -30,7 +30,12 @@ const update = z.object({
     status: z.enum(["Ongoing", "Pending", "Done"]).optional()
 });
 
+const status = z.object({
+    status: z.enum(["Ongoing", "Pending", "Done"], { required_error: "Status is required!" })
+})
+
 export const task_validation = {
     create,
-    update
+    update,
+    status
 }

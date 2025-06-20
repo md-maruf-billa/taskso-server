@@ -10,6 +10,7 @@ task_route.post("/create", auth(), validateRequest(task_validation.create), task
 task_route.get("/all", auth(), task_controller.get_all_task)
 task_route.patch("/update/:taskId", auth(), validateRequest(task_validation.update), task_controller.update_task)
 task_route.delete("/delete/:taskId", auth(),  task_controller.delete_task)
+task_route.patch("/change-status/:taskId", auth(), validateRequest(task_validation.status), task_controller.update_task)
 
 
 

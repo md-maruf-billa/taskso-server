@@ -1,4 +1,4 @@
-import { TTask } from "./task.interface";
+import { TStatus, TTask } from "./task.interface";
 import { TaskModel } from "./task.schema";
 
 const create_new_task_into_db = async (payload: TTask) => {
@@ -25,11 +25,20 @@ const delete_task_into_db = async (email: string, taskId: string) => {
     )
     return result
 }
+const change_status_into_db = async (email: string, taskId: string, payload: TStatus) => {
+    const result = await TaskModel.findOneAndUpdate(
+        { userEmail: email, _id: taskId },
+        { status: payload },
+        { new: true }
+    )
+    return result
+}
 
 
 export const task_services = {
     create_new_task_into_db,
     get_all_task_from_db,
     update_task_into_db,
-    delete_task_into_db
+    delete_task_into_db,
+    change_status_into_db
 }
