@@ -8,6 +8,7 @@ const taskSchema = new Schema<TTask>({
     dueDate: { type: String, required: true },
     category: { type: String, enum: ["Arts and Craft", "Nature", "Family", "Sport", "Friends", "Meditation"], required: true },
     status: { type: String, enum: ["Ongoing", "Pending", "Done"], default: "Pending" },
+    userEmail: { type: String, required: false }
 }, {
     versionKey: false,
     timestamps: true

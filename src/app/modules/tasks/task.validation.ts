@@ -15,7 +15,22 @@ const create = z.object({
     status: z.enum(["Ongoing", "Pending", "Done"]).default("Pending")
 });
 
+const update = z.object({
+    taskName: z.string().optional(),
+    description: z.string().optional(),
+    dueDate: z.string().optional(),
+    category: z.enum([
+        "Arts and Craft",
+        "Nature",
+        "Family",
+        "Sport",
+        "Friends",
+        "Meditation"
+    ]).optional(),
+    status: z.enum(["Ongoing", "Pending", "Done"]).optional()
+});
 
 export const task_validation = {
-    create
+    create,
+    update
 }
