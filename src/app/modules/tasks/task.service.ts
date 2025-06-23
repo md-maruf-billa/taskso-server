@@ -6,6 +6,10 @@ const create_new_task_into_db = async (payload: TTask) => {
     return result;
 }
 
+const get_single_task_from_db = async (email: string, takId: string) => {
+    const result = await TaskModel.findOne({ userEmail: email, _id: takId })
+    return result;
+}
 const get_all_task_from_db = async (email: string) => {
     const result = await TaskModel.find({ userEmail: email })
     return result;
@@ -40,5 +44,6 @@ export const task_services = {
     get_all_task_from_db,
     update_task_into_db,
     delete_task_into_db,
-    change_status_into_db
+    change_status_into_db,
+    get_single_task_from_db
 }

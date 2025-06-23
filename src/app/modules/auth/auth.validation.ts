@@ -19,10 +19,15 @@ const change_password = z.object({
     oldPassword: z.string({ required_error: "Old Password is required!!" }),
     newPassword: z.string({ required_error: "New Password is required!!" }),
 })
+const reset_password = z.object({
+    token: z.string({ required_error: "Token is required!!" }),
+    newPassword: z.string({ required_error: "New Password is required!!" }),
+})
 
 export const auth_validation = {
     register,
     login,
     forget,
-    change_password
+    change_password,
+    reset_password
 }

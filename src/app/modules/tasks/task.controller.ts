@@ -27,6 +27,16 @@ const get_all_task = async_handler(async (req, res) => {
         data: result
     })
 })
+const get_single_task = async_handler(async (req, res) => {
+    const { email } = req?.user;
+    const result = await task_services.get_single_task_from_db(email, req?.params?.taskId)
+    manage_response(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Task fetched successful",
+        data: result
+    })
+})
 const update_task = async_handler(async (req, res) => {
     const { taskId } = req?.params
     const { email } = req?.user;
@@ -65,5 +75,6 @@ export const task_controller = {
     get_all_task,
     update_task,
     delete_task,
-    change_status
+    change_status,
+    get_single_task
 }

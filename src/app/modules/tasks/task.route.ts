@@ -8,8 +8,9 @@ const task_route = Router()
 
 task_route.post("/create", auth(), validateRequest(task_validation.create), task_controller.create_new_task)
 task_route.get("/all", auth(), task_controller.get_all_task)
+task_route.get("/:taskId", auth(), task_controller.get_single_task)
 task_route.patch("/update/:taskId", auth(), validateRequest(task_validation.update), task_controller.update_task)
-task_route.delete("/delete/:taskId", auth(),  task_controller.delete_task)
+task_route.delete("/delete/:taskId", auth(), task_controller.delete_task)
 task_route.patch("/change-status/:taskId", auth(), validateRequest(task_validation.status), task_controller.update_task)
 
 
